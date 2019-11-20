@@ -1,21 +1,12 @@
 #Importing the libraries
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('Preprocessed_dataset.csv', encoding= 'latin-1')
 dataset.dropna(inplace=True)
 
-#Dataset properties
-#dataset["usd_pledged"].mean()
-#dataset["usd_pledged"].std()
-#dataset["usd_pledged"].min()
-#dataset["usd_pledged"].max()
-#dspass = dataset[(dataset.status == 'successful')]
-#dsfail = dataset[(dataset.status == 'failed')]
-#dspass["usd_pledged"].median()
-#dsfail["usd_pledged"].median()
+
 
 # Filtering data
 a = []
@@ -53,7 +44,7 @@ for i in range(0,15):
     Y = labelencoder_Y.fit_transform(Y)
     
     # Splitting the dataset into the Training set and Test set
-    from sklearn.cross_validation import train_test_split
+    from sklearn.model_selection import train_test_split
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, random_state = 1)
     #Y_train1,Y_test1 =  train_test_split( Y, test_size = 0.1, random_state = 1)
     
@@ -81,5 +72,4 @@ for i in range(0,15):
 results = [a,b]
 avg = sum(b)/len(b)
 
-print(avg)
-print(results)
+print(avg*100)
